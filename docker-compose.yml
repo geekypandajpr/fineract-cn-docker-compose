@@ -4,7 +4,8 @@ services:
     image: apache/fineract-cn-provisioner:latest
     ports:
       - "2020:2020"
-    environment:
+    mem_limit: ${SERVICE_MEMORY}
+    environment: 
       activemq.brokerUrl: ${ACTIVEMQ_BROKER_URL}
       bonecp.acquireIncrement: 1
       bonecp.maxConnectionsPerPartition: 4
@@ -42,12 +43,12 @@ services:
       system.publicKey.exponent: ${PUBLIC_KEY_EXPONENT}
       system.publicKey.modulus: ${PUBLIC_KEY_MODULUS}
       system.publicKey.timestamp: ${PUBLIC_KEY_TIMESTAMP}
-    deploy:
-      replicas: 1
-      restart_policy:
-        condition: any
-        delay: 10s
-        max_attempts: 3
+    # deploy:
+    #   replicas: 1
+    #   restart_policy:
+    #     condition: any
+    #     delay: 10s
+    #     max_attempts: 3
     networks:
       external_tools_default:
       fineract:
@@ -57,6 +58,7 @@ services:
     image: apache/fineract-cn-identity:latest
     ports:
       - "2021:2021"
+    mem_limit: ${SERVICE_MEMORY}
     environment:
       activemq.brokerUrl: ${ACTIVEMQ_BROKER_URL}
       cassandra.cl.delete: ONE
@@ -87,12 +89,12 @@ services:
       system.publicKey.exponent: ${PUBLIC_KEY_EXPONENT}
       system.publicKey.modulus: ${PUBLIC_KEY_MODULUS}
       system.publicKey.timestamp: ${PUBLIC_KEY_TIMESTAMP}
-    deploy:
-      replicas: 1
-      restart_policy:
-        condition: any
-        delay: 10s
-        max_attempts: 3
+    # deploy:
+    #   replicas: 1
+    #   restart_policy:
+    #     condition: any
+    #     delay: 10s
+    #     max_attempts: 3
     networks:
       external_tools_default:
       fineract:
@@ -102,6 +104,7 @@ services:
     image: apache/fineract-cn-rhythm:latest
     ports:
       - "2022:2022"
+    mem_limit: ${SERVICE_MEMORY}
     environment:
       activemq.brokerUrl: ${ACTIVEMQ_BROKER_URL}
       bonecp.acquireIncrement: 1
@@ -141,10 +144,10 @@ services:
       system.publicKey.exponent: ${PUBLIC_KEY_EXPONENT}
       system.publicKey.modulus: ${PUBLIC_KEY_MODULUS}
       system.publicKey.timestamp: ${PUBLIC_KEY_TIMESTAMP}
-    deploy:
-      replicas: 1
-      restart_policy:
-        condition: on-failure
+    # deploy:
+    #   replicas: 1
+    #   restart_policy:
+    #     condition: on-failure
     networks:
       external_tools_default:
       fineract:
@@ -154,6 +157,7 @@ services:
     image: apache/fineract-cn-office:latest
     ports:
       - "2023:2023"
+    mem_limit: ${SERVICE_MEMORY}
     environment:
       activemq.brokerUrl: ${ACTIVEMQ_BROKER_URL}
       bonecp.acquireIncrement: 1
@@ -199,6 +203,7 @@ services:
     image: apache/fineract-cn-customer:latest
     ports:
       - "2024:2024"
+    mem_limit: ${SERVICE_MEMORY}
     environment:
       activemq.brokerUrl: ${ACTIVEMQ_BROKER_URL}
       bonecp.acquireIncrement: 1
@@ -240,6 +245,7 @@ services:
   accounting-ms:
     ports:
       - "2025:2025"
+    mem_limit: ${SERVICE_MEMORY}
     image: apache/fineract-cn-accounting:latest
     environment:
       activemq.brokerUrl: ${ACTIVEMQ_BROKER_URL}
@@ -287,6 +293,7 @@ services:
     image: apache/fineract-cn-portfolio:latest
     ports:
       - "2026:2026"
+    mem_limit: ${SERVICE_MEMORY}
     environment:
       activemq.brokerUrl: ${ACTIVEMQ_BROKER_URL}
       bonecp.acquireIncrement: 1
@@ -334,6 +341,7 @@ services:
     image: apache/fineract-cn-deposit-account-management:latest
     ports:
       - "2027:2027"
+    mem_limit: ${SERVICE_MEMORY}
     environment:
       activemq.brokerUrl: ${ACTIVEMQ_BROKER_URL}
       cassandra.cl.delete: ONE
@@ -374,6 +382,7 @@ services:
     image: apache/fineract-cn-teller:latest
     ports:
       - "2028:2028"
+    mem_limit: ${SERVICE_MEMORY}
     environment:
       activemq.brokerUrl: ${ACTIVEMQ_BROKER_URL}
       cassandra.cl.delete: ONE
@@ -412,6 +421,7 @@ services:
     image: apache/fineract-cn-reporting:latest
     ports:
       - "2029:2029"
+    mem_limit: ${SERVICE_MEMORY}
     environment:
       activemq.brokerUrl: ${ACTIVEMQ_BROKER_URL}
       cassandra.cl.delete: ONE
@@ -447,6 +457,7 @@ services:
     image: apache/fineract-cn-cheques:latest
     ports:
       - "2030:2030"
+    mem_limit: ${SERVICE_MEMORY}
     environment:
       activemq.brokerUrl: ${ACTIVEMQ_BROKER_URL}
       cassandra.cl.delete: ONE
@@ -482,6 +493,7 @@ services:
     image: apache/fineract-cn-payroll:latest
     ports:
       - "2031:2031"
+    mem_limit: ${SERVICE_MEMORY}
     environment:
       activemq.brokerUrl: ${ACTIVEMQ_BROKER_URL}
       cassandra.cl.delete: ONE
@@ -517,6 +529,7 @@ services:
     image: apache/fineract-cn-group:latest
     ports:
       - "2032:2032"
+    mem_limit: ${SERVICE_MEMORY}
     environment:
       activemq.brokerUrl: ${ACTIVEMQ_BROKER_URL}
       cassandra.cl.delete: ONE
@@ -552,6 +565,7 @@ services:
     image: apache/fineract-cn-notifications:latest
     ports:
       - "2033:2033"
+    mem_limit: ${SERVICE_MEMORY}
     environment:
       activemq.brokerUrl: ${ACTIVEMQ_BROKER_URL}
       cassandra.cl.delete: ONE
